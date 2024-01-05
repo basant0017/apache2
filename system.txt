@@ -249,3 +249,22 @@ find . -type f -exec chmod u=rw,g=r,o=r '{}' \;
 openssl rsa -in server.key -text > private.pem      ---convert private to pem file
 puttygen pemKey.pem -o ppkKey.ppk -O private
 puttygen server1.ppk -O private-openssh -o server1.pem      ---converte .ppk to .pem
+
+
+<VirtualHost *:443>
+DocumentRoot /var/www/html
+SSLEngine on
+SSLCertificateFile /opt/ssl/file.crt
+SSLCertificateKeyFile /opt/ssl/file.key
+SSLCertificateChainFile /opt/ssl/bundal.crt
+</VirtualHost>
+
+sudo apt install php7.4 libapache2-mod-php7.4 php7.4-common php7.4-gmp php7.4-curl php7.4-intl php7.4-mbstring php7.4-xmlrpc php7.4-mysql php7.4-gd php7.4-bcmath php7.4-xml php7.4-cli php7.4-zip
+
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'UserPassword';
+mysql> FLUSH PRIVILEGES;
+mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+
