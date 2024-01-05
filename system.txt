@@ -1,5 +1,6 @@
 # usermod -aG sudo sammy
 /opt/cpanel/ea-php73/root/usr/bin/php  /opt/cpanel/composer/bin/composer
+/opt/alt/php81/usr/bin/php -d memory_limit=-1 /usr/bin/composer require
 setfacl -b -R
 
 sudo a2enmod proxy_fcgi proxy 
@@ -187,16 +188,23 @@ Teradata: 1025
 Cassandra: 90
 Clear Route Cache
 
-php artisan route:cache
-Clear Cache Laravel Application 
 php artisan cache:clear
-Laravel Clear Config Cache
+php artisan view:clear
+php artisan view:clear
+php artisan route:clear
+php artisan cache:clear
 php artisan config:cache
-Clear View Cache Laravel
 -------------------
 # journalctl -n 5
 # journalctl -p err
 # journalctl -f
+
+
+cat > /root/.my.cnf << EOF
+[Client]
+password=$mycnf
+user=root
+
 
 ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head 
 
@@ -212,3 +220,32 @@ Prestashop – app/config/parameters.php
 WHMCS – configuration.php
 Laravel – config/database.php
 Laravel/php -.env
+
+
+
+fdisk -l
+  985  pvdisplay
+  986  vgdisplay
+  987  pvcreate /dev/sdc
+  988  lvmdiskscan -l
+  989  vgextend vg0 /dev/sdc
+  990  df -h
+  991  lvm lvextend -l +100%FREE /dev/mapper/vg0-vg--root
+  992  resize2fs -p /dev/mapper/vg0-vg--root
+  993  df -h
+
+rsync -avzh --progress -e "ssh -p22" 2023-03-05 root@:/home/
+dmesg | grep –i "Out of memory“ (/var/log/messages OR /var/log/syslog)
+
+HISTTIMEFORMAT="%d/%m/%y %T "
+
+sync; echo 1 > /proc/sys/vm/drop_caches
+sync; echo 2 > /proc/sys/vm/drop_caches
+sync; echo 3 > /proc/sys/vm/drop_caches  
+
+find . -type d -exec chmod u=rwx,g=rx,o=rx '{}' \;
+find . -type f -exec chmod u=rw,g=r,o=r '{}' \;
+
+openssl rsa -in server.key -text > private.pem      ---convert private to pem file
+puttygen pemKey.pem -o ppkKey.ppk -O private
+puttygen server1.ppk -O private-openssh -o server1.pem      ---converte .ppk to .pem
