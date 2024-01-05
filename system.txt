@@ -17,3 +17,6 @@ sudo a2enmod actions alias proxy_fcgi fcgid
 <FilesMatch \.php$>
         SetHandler "proxy:unix:/run/php/php8.1-fpm.sock|fcgi://localhost/"
 </FilesMatch>
+
+
+sudo apt install php8.2-{fpm,bcmath,xml,mysql,zip,intl,ldap,gd,cli,bz2,curl,mbstring,pgsql,opcache,soap,cgi}
