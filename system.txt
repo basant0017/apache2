@@ -248,7 +248,7 @@ find . -type f -exec chmod u=rw,g=r,o=r '{}' \;
 
 openssl rsa -in server.key -text > private.pem      ---convert private to pem file
 puttygen pemKey.pem -o ppkKey.ppk -O private
-puttygen server1.ppk -O private-openssh -o server1.pem      ---converte .ppk to .pem
+puttygen server1.ppk -O private-openssh -o server1.pem   
 
 
 <VirtualHost *:443>
