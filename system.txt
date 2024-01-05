@@ -31,6 +31,13 @@ bcmath,xml,fpm,mysql,zip,intl,ldap,gd,cli,bz2,curl,mbstring,pgsql,opcache,soap,c
 ,pcntl,pcre,PDO,pdo_mysql,pdo_sqlite,Phar,posix,readline,Reflection,session,SimpleXML,soap,sockets,sodium,SPL,sqlite3,standard,tokenizer,xml,xmlreader
 ,xmlwriter,xsl,Zend,OPcache,zip,zlib
 
+
+sudo vi /etc/apache2/apache2.conf
+The lines you will need to add are:
+# phpMyAdmin Configuration
+Include /etc/phpmyadmin/apache.conf
+Edit the configuration file for phpMyAdmin. Add AWS RDS endpoint and other server configurations
+Sudo vi /etc/phpMyAdmin/config.inc.php
 $i++;
     $cfg['Servers'][$i]['host'] = 'endpoint';//Enter IP address or hostname
 $cfg['Servers'][$i]['compress'] = false;
