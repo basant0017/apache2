@@ -1,8 +1,16 @@
+# usermod -aG sudo sammy
+/opt/cpanel/ea-php73/root/usr/bin/php  /opt/cpanel/composer/bin/composer
+setfacl -b -R
+
 sudo a2enmod proxy_fcgi proxy 
+sudo a2enmod rewrite
+Replace 'default-ssl'
+sudo apt-get install openssl
+sudo a2enmod ssl
+sudo a2ensite default-ssl
 nano /etc/apache2/sites-available/example.com.conf 
 sudo a2ensite example.com.conf 
 sudo systemctl reload apache2 
-
         <Directory /var/www/html>
         Options FollowSymLinks
         AllowOverride All
@@ -12,11 +20,195 @@ sudo apt install php7.2-fpm php5.6-fpm
 sudo ls -al /var/run/php/
 sudo a2enmod actions alias proxy_fcgi fcgid
 
-
-
 <FilesMatch \.php$>
         SetHandler "proxy:unix:/run/php/php8.1-fpm.sock|fcgi://localhost/"
 </FilesMatch>
 
-
 sudo apt install php8.2-{fpm,bcmath,xml,mysql,zip,intl,ldap,gd,cli,bz2,curl,mbstring,pgsql,opcache,soap,cgi}
+
+bcmath,xml,fpm,mysql,zip,intl,ldap,gd,cli,bz2,curl,mbstring,pgsql,opcache,soap,cgi,calendar,fpm,Core,ctype,curl,date,dom,fileinfo,filter,ftp,gd,hash,iconv,imap,intl,json,libxml,mbstring,mysqli,mysqlnd,openssl
+,pcntl,pcre,PDO,pdo_mysql,pdo_sqlite,Phar,posix,readline,Reflection,session,SimpleXML,soap,sockets,sodium,SPL,sqlite3,standard,tokenizer,xml,xmlreader
+,xmlwriter,xsl,Zend,OPcache,zip,zlib
+
+$i++;
+    $cfg['Servers'][$i]['host'] = 'endpoint';//Enter IP address or hostname
+$cfg['Servers'][$i]['compress'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+$cfg['Servers'][$i]['connect_type'] = 'tcp';
+$cfg['Servers'][$i]['extension'] = 'mysqli'; // Extension to connect to the database.
+$cfg['Servers'][$i]['port'] = ''; //The port number of MySQL service $cfg['Servers'][$i]['user'] = ''; // Username to connect
+$cfg['Servers'][$i]['password'] = ''; //Password associated with the username
+
+--------------------------------------
+How To Add Swap Space on Ubuntu 20.04
+sudo swapon --show
+sudo fallocate -l 4G /swapfile
+ls -lh /swapfile
+
+sudo chmod 600 /swapfile
+ls -lh /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+free -h
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+------------------------------------------------
+Install NodeJS 18 on Ubuntu
+curl -s https://deb.nodesource.com/setup_18.x | sudo bash
+sudo apt install nodejs -y
+
+ Installing PM2
+ sudo npm install pm2@latest -g
+ pm2 start hello.js
+ pm2 startup systemd
+ pm2 save
+ pm2 list
+--------------------------------------------
+install Composer on your system
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/bin/composer
+
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+-------------------------------------------
+
+
+# Switch PHP
+sudo update-alternatives --config php
+# Switch
+sudo update-alternatives --config phar
+# Switch
+sudo update-alternatives --config phar.phar
+
+# Disable PHP 7.0
+sudo a2dismod php7.0
+
+# Enable PHP 8.0
+sudo a2enmod php8.0
+
+# Install FCGID
+sudo apt install libapache2-mod-fcgid
+
+
+Install Web Server
+CREATE USER 'magento'@'localhost' IDENTIFIED WITH mysql_native_password BY 'm0d1f1257';
+CREATE DATABASE magentodb;
+GRANT ALL PRIVILEGES ON magentodb.* TO 'magento'@'localhost';
+FLUSH PRIVILEGES;
+mysql> \q
+
+
+file_uploads = On
+allow_url_fopen = On
+short_open_tag = On
+date.timezone = Asia/Singapore
+memory_limit = 1G
+max_execution_time = 1800
+max_input_time = 360
+max_input_vars = 5000
+upload_max_filesize = 256M
+post_max_size = 192M
+disable_functions =
+session.save_path = "/tmp"
+zlib.output_compression = On
+
+
+grep -i -r "SSLCertificateFile" /etc/apache2/
+
+cgi.fix_pathinfo = 0
+
+opcache.enable=1 
+opcache.save_comments = 1
+---------------------
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:New York
+Locality Name (eg, city) []:New York
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:My Company
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:example.com
+Email Address []:sammy@example.com
+
+SSLCertificateFile /etc/apache2/ssl/7abca5c1b8.crt
+SSLCertificateKeyFile /etc/apache2/ssl/example.com.key
+SSLCertificateChainFile /etc/apache2/ssl/gd_bundle-g2-g1.crt
+
+-------------
+Combine all the certificates into a single file
+$ cat your_domain.crt your_domain.ca-bundle >> your_domain_chain.crt
+
+$ cat your_domain.crt > your_domain_chain.crt ; echo >> your_domain_chain.crt ; cat your_domain.ca-bundle >> your_domain_chain.crt
+
+listen 443;
+
+ssl on;
+
+ssl_certificate /path/to/certificate/your_domain_chain.crt;
+
+ssl_certificate_key /path/to/your_private.key;
+
+root /path/to/webroot;
+
+server_name your_domain.com www.your_domain.com;
+
+}
+
+-----------------------------
+sudo vim /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /var/www/html
+ 
+    <Directory /var/www/html>
+        Options -Indexes +FollowSymLinks +MultiViews
+        AllowOverride All
+        Require all granted
+    </Directory>
+ 
+    <FilesMatch \.php$>
+        # 2.4.10+ can proxy to unix socket
+        SetHandler "proxy:unix:/var/run/php/php7.4-fpm.sock|fcgi://localhost"
+    </FilesMatch>
+ 
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+sudo systemctl restart apache2
+echo "<?php phpinfo(); ?>" > /var/www/html/info.php
+================
+MySQL: 3306
+Oracle: 1521
+PostgreSQL: 5432
+Redshift: 5439
+Microsoft SQL Server: 1433
+MongoDB: 27017
+Teradata: 1025
+Cassandra: 90
+Clear Route Cache
+
+php artisan route:cache
+Clear Cache Laravel Application 
+php artisan cache:clear
+Laravel Clear Config Cache
+php artisan config:cache
+Clear View Cache Laravel
+-------------------
+# journalctl -n 5
+# journalctl -p err
+# journalctl -f
+
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head 
+
+PHP  use mysqli_connect instead)
+grep -Rli mysql_connect
+WordPress – wp-config.php
+Drupal – sites/default/settings.php
+Joomla – configuration.php
+Magento – app/etc/local.xml
+OpenCart – admin/config.php
+phpBB – config.php
+Prestashop – app/config/parameters.php
+WHMCS – configuration.php
+Laravel – config/database.php
+Laravel/php -.env
