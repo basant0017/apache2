@@ -294,6 +294,14 @@ db.createUser(
 
 
   db.grantRolesToUser('dbuser', [{ role: 'readWrite', db: 'databaase' }]);
+---------------------------------------------------------------------
+db.createUser(
+  {
+    user: "user",
+    pwd: "s2s",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase" ]
+  }
+)
 sudo ${EDITOR:-vi} /etc/mongod.conf
 security:
   authorization: enabled
