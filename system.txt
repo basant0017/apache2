@@ -31,6 +31,9 @@ bcmath,xml,fpm,mysql,zip,intl,ldap,gd,cli,bz2,curl,mbstring,pgsql,opcache,soap,c
 ,pcntl,pcre,PDO,pdo_mysql,pdo_sqlite,Phar,posix,readline,Reflection,session,SimpleXML,soap,sockets,sodium,SPL,sqlite3,standard,tokenizer,xml,xmlreader
 ,xmlwriter,xsl,Zend,OPcache,zip,zlib
 
+sudo apt install php7.4 libapache2-mod-php7.4 php7.4-mysql php-net-ldap2 php-net-ldap3 php-imagick php7.4-common php7.4-gd php7.4-imap php7.4-json php7.4-curl php7.4-zip php7.4-xml php7.4-mbstring php7.4-bz2 php7.4-intl php7.4-gmp php-net-smtp php-mail-mime php-net-idna2 mailutil
+
+install php php-cli php-fpm php-mysqlnd php-zip php-devel php-gd php-mcrypt php-mbstring php-curl php-xml php-intl php-pear php-bcmath php-net-smtp php-gmp php-mail-mime php-imap php-imagick php-net-ldap2 php-net-ldap3 php-common php-gd php-bz2 php-opcache php-mysql php-json php-pdo php-ldap php-xmlrpc  -y
 
 sudo vi /etc/apache2/apache2.conf
 The lines you will need to add are:
