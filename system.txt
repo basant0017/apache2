@@ -305,3 +305,19 @@ db.createUser(
 sudo ${EDITOR:-vi} /etc/mongod.conf
 security:
   authorization: enabled
+-------------------------
+mysql -u root -p
+# systemctl stop mariadb
+# systemctl disable mariadb
+# systemctl status mariadb
+# mysqld-safe --skip-grant-tables &
+# mysql
+# show databases;
+# use mysql;
+# show tables;
+# select user, host, password from user;
+# update user set password=password('redhat') where user='root' and host= 'localhost';
+# exit
+# mysqladmin -u root -p shutdown
+# system start mariadb
+# systemctl enable mariadb
