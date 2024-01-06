@@ -2,6 +2,7 @@
 /opt/cpanel/ea-php73/root/usr/bin/php  /opt/cpanel/composer/bin/composer
 /opt/alt/php81/usr/bin/php -d memory_limit=-1 /usr/bin/composer require
 setfacl -b -R
+sudo rsync -avP ~/wordpress/ /var/www/html
 
 sudo a2enmod proxy_fcgi proxy 
 sudo a2enmod rewrite
