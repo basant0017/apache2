@@ -112,13 +112,10 @@ sudo update-alternatives --config php
 sudo update-alternatives --config phar
 # Switch
 sudo update-alternatives --config phar.phar
-
 # Disable PHP 7.0
 sudo a2dismod php7.0
-
 # Enable PHP 8.0
 sudo a2enmod php8.0
-
 # Install FCGID
 sudo apt install libapache2-mod-fcgid
 
@@ -172,17 +169,11 @@ $ cat your_domain.crt your_domain.ca-bundle >> your_domain_chain.crt
 $ cat your_domain.crt > your_domain_chain.crt ; echo >> your_domain_chain.crt ; cat your_domain.ca-bundle >> your_domain_chain.crt
 
 listen 443;
-
 ssl on;
-
 ssl_certificate /path/to/certificate/your_domain_chain.crt;
-
 ssl_certificate_key /path/to/your_private.key;
-
 root /path/to/webroot;
-
 server_name your_domain.com www.your_domain.com;
-
 }
 
 -----------------------------
@@ -256,15 +247,15 @@ Laravel/php -.env
 
 
 fdisk -l
-  985  pvdisplay
-  986  vgdisplay
-  987  pvcreate /dev/sdc
-  988  lvmdiskscan -l
-  989  vgextend vg0 /dev/sdc
-  990  df -h
-  991  lvm lvextend -l +100%FREE /dev/mapper/vg0-vg--root
-  992  resize2fs -p /dev/mapper/vg0-vg--root
-  993  df -h
+pvdisplay
+vgdisplay
+pvcreate /dev/sdc
+lvmdiskscan -l
+vgextend vg0 /dev/sdc
+df -h
+lvm lvextend -l +100%FREE /dev/mapper/vg0-vg--root
+resize2fs -p /dev/mapper/vg0-vg--root
+
 
 rsync -avzh --progress -e "ssh -p22" 2023-03-05 root@:/home/
 dmesg | grep –i "Out of memory“ (/var/log/messages OR /var/log/syslog)
