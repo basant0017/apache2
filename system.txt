@@ -1,3 +1,14 @@
+ro  quiet splash $vt_handoff
+Now delete and replace that with, rw init=/bin/bash
+Once done, press CTRL + X or F10 to boot in single-user mode.
+we got the boot partition access as root with a read and write access use this command:
+mount | grep -w /
+output will be like this:
+/dev/sda5 on type ext4 (rw,realtime)
+passwd testuser
+exec /sbin/init
+
+
 # usermod -aG sudo sammy
 /opt/cpanel/ea-php73/root/usr/bin/php  /opt/cpanel/composer/bin/composer
 /opt/alt/php81/usr/bin/php -d memory_limit=-1 /usr/bin/composer require
