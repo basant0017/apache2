@@ -1,4 +1,7 @@
 https://github.com/ValaxyTech/DevOpsDemos/blob/master/Kubernetes/k8s-setup.md
+
+https://www.mirantis.com/blog/kubernetes-replication-controller-replica-set-and-deployments-understanding-replication-options/
+
 install AWSCLI
  curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
  apt install unzip python
