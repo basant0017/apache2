@@ -10,3 +10,7 @@ install AWSCLI
  ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 
+
+azure: 
+https://learn.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-portal?tabs=azure-cli
+
