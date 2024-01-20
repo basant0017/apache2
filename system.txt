@@ -23,6 +23,17 @@ sudo ln -sf /opt/filezilla3/bin/filezilla /usr/bin/filezilla
 # ln -s /opt/FileZilla3/bin/filezilla /usr/bin/filezilla
 # filezilla
 
+By default PHP 8.1
+sudo apt install software-properties-common && sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+$ sudo apt install php8.1-{bcmath,common,curl,fpm,gd,intl,mbstring,mysql,soap,xml,xsl,zip,cli}
+$ sudo sed -i "s/memory_limit = .*/memory_limit = 768M/" /etc/php/8.1/fpm/php.ini
+$ sudo sed -i "s/upload_max_filesize = .*/upload_max_filesize = 128M/" /etc/php/8.1/fpm/php.ini
+$ sudo sed -i "s/zlib.output_compression = .*/zlib.output_compression = on/" /etc/php/8.1/fpm/php.ini
+$ sudo sed -i "s/max_execution_time = .*/max_execution_time = 18000/" /etc/php/8.1/fpm/php.ini
+
+grep -i "Out of memory" /var/log/messages | grep -i java
+
 Multiple PHP
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:ondrej/php -y
