@@ -3,8 +3,13 @@ Let’s now enable these modules with a2enmod command:
 sudo a2emod proxy && sudo a2enmod proxy_http && a2enmod ssl
 apache2ctl -M
 curl -I -k https://magento.example.com/
-
-
+==========================
+How to Setup Passwordless SSH Login
+ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+ls ~/.ssh/id_*
+ssh-copy-id remote_username@server_ip_address
+cat ~/.ssh/id_rsa.pub | ssh remote_username@server_ip_address "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+==============================
 Disable Apache Prefork module.
 sudo a2dismod mpm_prefork
 Enable Apache Event module.
