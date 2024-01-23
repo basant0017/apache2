@@ -1,4 +1,33 @@
 
+Let’s now enable these modules with a2enmod command:
+sudo a2emod proxy && sudo a2enmod proxy_http && a2enmod ssl
+apache2ctl -M
+curl -I -k https://magento.example.com/
+
+
+Disable Apache Prefork module.
+sudo a2dismod mpm_prefork
+Enable Apache Event module.
+sudo a2enmod mpm_event proxy_fcgi setenvif
+sudo a2enmod mpm_event proxy_fcgi setenvif
+Enable PHP FPM Configuration
+Now you can enable PHP-FPM configuration.
+sudo a2enconf php8.1-fpm
+Enable HTTP2
+If you need HTTP 2 support you can enable it also.
+sudo a2enmod http2
+
+=======================================
+Step 1:-  Connect to your ec2 instance
+Step 2-: Install Node version manager
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+Step 3:-  Activate NVM
+. ~/.nvm/nvm.sh
+Step 4:- Install the latest version of NodeJs
+nvm install node
+Step 5:- Test NodeJs
+node -e "console.log('Running Node.js ' + process.version)"
+=========================================
 sudo apt-get install libgtk2.0-0
 I installed libexpat but I still got errors. So I had to symlink to bypass and now it works.
 
