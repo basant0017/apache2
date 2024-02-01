@@ -9,8 +9,8 @@ node -e "console.log('Running Node.js ' + process.version)"
 
 
 <VirtualHost *:80>
-        ServerName maxx.staffwizard.com
-        Redirect permanent / https://maxx.staffwizard.com/
+        ServerName mydomain.com
+        Redirect permanent / https://mydomain.com/
 
 </VirtualHost>
 
@@ -35,6 +35,14 @@ SSLCertificateFile /etc/ssl/mydomain.com.crt
 SSLCertificateKeyFile /etc/ssl/mydomain.key
 SSLCertificateChainFile /etc/ssl/mydomain.com.ca-bundle
 </VirtualHost> 
+
+
+ssl csr genterate
+openssl genrsa -out regenbrokersdubai.com.key 2048
+openssl req -new -key regenbrokersdubai.com.key -out regenbrokersdubai.com.csr
+
+openssl rsa -in server.key -text > private.pem  	---convert private to pem file
+puttygen pemKey.pem -o ppkKey.ppk -O private
 
 
 $ sudo sed -i -e 's/80/8080/g' /etc/apache2/ports.conf
