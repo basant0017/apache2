@@ -8,6 +8,35 @@ node -e "console.log('Running Node.js ' + process.version)"
 
 
 
+<VirtualHost *:80>
+        ServerName maxx.staffwizard.com
+        Redirect permanent / https://maxx.staffwizard.com/
+
+</VirtualHost>
+
+<VirtualHost 3>
+     ServerAdmin webmaster@mydomain.com
+     <Directory "/home/quardhub/www/mydomain.com/publ">
+          Options Indexes FollowSymLinks
+          AllowOverride All
+          Require all granted
+          DirectoryIndex index.html index.php index.htm
+     </Directory>
+ServerName mydomain.com
+DocumentRoot var/www/../public_html
+ErrorLog www/home/logs/error_log
+CustomLog /usr/www/example/httpd/logs/accesslog combined
+Header always set Strict-Transport-Security: max-age=63072000
+SSLEngine on
+SSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1
+SSLHonorCipherOrder On
+SSLCipherSuite EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH
+SSLCertificateFile /etc/ssl/mydomain.com.crt
+SSLCertificateKeyFile /etc/ssl/mydomain.key
+SSLCertificateChainFile /etc/ssl/mydomain.com.ca-bundle
+</VirtualHost> 
+
+
 $ sudo sed -i -e 's/80/8080/g' /etc/apache2/ports.conf
 $ sudo sed -i -e 's/80/8080/g' /etc/apache2/sites-available/*
 
