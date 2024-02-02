@@ -1,3 +1,14 @@
+=============================
+location /pma {
+        alias /var/www/pma; # Adjust to the actual path
+        index index.php;
+
+        location ~ \.php$ {
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $request_filename;
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock; # Adjust for your PHP version
+        }
+    }
 ---------
 Node.js on an Amazon EC2 Instance
 Install node version manager (nvm)
