@@ -1,3 +1,24 @@
+============
+sudo yum -y update          # Install the latest system updates.
+sudo yum -y install aws-cli # Install the AWS CLI.
+aws --version               # Confirm the AWS CLI was installed.
+---
+sudo apt update             # Install the latest system updates.
+sudo apt install -y awscli  # Install the AWS CLI.
+aws --version               # Confirm the AWS CLI was installed.
+
+wget https://bootstrap.pypa.io/get-pip.py # Get the pip install file.
+sudo python get-pip.py                    # Install pip. (You might need to run 'sudo python2 get-pip.py' or 'sudo python3 get-pip.py' instead, depending on how Python is installed.)
+rm get-pip.py                             # Delete the pip install file, as it is no longer needed.
+
+sudo pip install aws-shell
+
+aws s3 mb s3://cloud9-123456789012-bucket # For the AWS CLI.
+s3 mb s3://cloud9-123456789012-bucket     # For the aws-shell.
+
+aws s3 rb s3://cloud9-123456789012-bucket # For the AWS CLI.
+s3 rb s3://cloud9-123456789012-bucket     # For the aws-shell.
+
 =============================
 location /pma {
         alias /var/www/pma; # Adjust to the actual path
