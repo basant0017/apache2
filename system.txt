@@ -1,3 +1,12 @@
+
+<VirtualHost *:80>
+    ServerName subdomain.domain.io
+    ProxyPreserveHost On
+    ProxyPass "/" "http://localhost:4000/"
+    ProxyPassReverse "/" "http://localhost:4000/"
+</VirtualHost>
+
+
 ============
 sudo yum -y update          # Install the latest system updates.
 sudo yum -y install aws-cli # Install the AWS CLI.
