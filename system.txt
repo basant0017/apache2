@@ -524,3 +524,16 @@ mysql -u root -p
 # mysqladmin -u root -p shutdown
 # system start mariadb
 # systemctl enable mariadb
+
+
+
+Manage multiple MySql server using single phpmyadmin
+mysql> CREATE USER 'phpmaroot'@'%' IDENTIFIED BY 'pmapass123!';
+mysql> GRANT ALL PRIVILEGES ON *.* TO phpmaroot@'%';
+
+cp /etc/phpmyadmin/config.inc.php /etc/phpmyadmin/config.inc.php.bak
+Find and uncomment the line below:
+//$cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
+$cfg['Servers'][$i]['AllowNoPassword'] = TRUE;
+
+
