@@ -1,4 +1,13 @@
 
+
+
+mysql -u root -p
+mysql> CREATE DATABASE roundcubemail;
+mysql> CREATE USER 'roundcube'@'localhost' IDENTIFIED BY 'Strong-Password';
+mysql> GRANT ALL PRIVILEGES ON roundcubemail . * TO 'roundcube'@'localhost';
+mysql> FLUSH PRIVILEGES;
+mysql> exit;
+==================================
 <VirtualHost *:80>
     ServerName subdomain.domain.io
     ProxyPreserveHost On
