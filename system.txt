@@ -1,4 +1,24 @@
 
+===========================================================
+
+<VirtualHost *:443>
+        SSLEngine On
+        SSLProtocol All -SSLv2 -SSLv3
+        SSLHonorCipherOrder on
+ 
+        # Prefer PFS, allow TLS, avoid SSL, for IE8 on XP still allow 3DES
+        SSLCipherSuite "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+AESGCM EECDH EDH+AESGCM EDH+aRSA HIGH !MEDIUM !LOW !aNULL !eNULL !LOW !RC4 !MD5 !EXP !PSK !SRP !DSS"
+ 
+        # Prevent CRIME/BREACH compression attacks
+        SSLCompression Off
+ 
+        # Commit to HTTPS only traffic for at least 180 days
+        Header add Strict-Transport-Security "max-age=15552000"
+        
+SSLCertificateFile /etc/apache2/ssl/7abca5c1b8.crt
+SSLCertificateKeyFile /etc/apache2/ssl/example.com.key
+SSLCertificateChainFile /etc/apache2/ssl/gd_bundle-g2-g1.crt
+=======================================
 NGINX web server
 /etc/nginx/conf.d/phpMyAdmin.conf.
 ============================================================
@@ -533,6 +553,22 @@ sudo ${EDITOR:-vi} /etc/mongod.conf
 security:
   authorization: enabled
 -------------------------
+
+Creating Administrative MongoDB User
+use admin
+switched to db admin
+db.createUser(
+  {
+    user: "MongoAdmin",
+    pwd: passwordPrompt(),
+    roles: [
+      { role: "userAdminAnyDatabase", db: "admin" },
+      { role: "readWriteAnyDatabase", db: "admin" }
+    ]
+  }
+)
+==================================
+
 mysql -u root -p
 # systemctl stop mariadb
 # systemctl disable mariadb
