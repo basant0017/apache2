@@ -1,3 +1,7 @@
+==============
+sudo update-alternatives --set php /usr/bin/php5.6
+sudo update-alternatives --config php
+sudo update-alternatives --set phar /usr/bin/phar5.6
 =============================================================
 server {
     listen 80;
