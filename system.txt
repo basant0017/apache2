@@ -1,3 +1,8 @@
+ SSLEngine on
+  SSLCertificateFile /etc/ssl/certs/example.crt
+  SSLCertificateKeyFile /etc/ssl/private/example.key
+  SSLCertificateChainFile /etc/ssl/certs/example.ca-bundle
+
 ==============
 sudo update-alternatives --set php /usr/bin/php5.6
 sudo update-alternatives --config php
