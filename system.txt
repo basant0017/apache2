@@ -4,6 +4,23 @@
   SSLCertificateChainFile /etc/ssl/certs/example.ca-bundle
 
 
+================
+<VirtualHost *:80>
+
+ServerName www.archivomental.com
+ServerAlias archivomental.com
+DocumentRoot /var/www/archivomental
+
+RewriteEngine On
+SSLProtocol all -SSLv2 -SSLv3
+SSLCipherSuite HIGH:!aNULL:!MD5
+RewriteCond %{HTTPS} off
+RewriteRule   "^/(.*)_SSL$"   "https://%{SERVER_NAME}/$1" [R,L]
+
+</VirtualHost>
+
+=============
+
 curl -I --http2 -s https://gutterempire.app/ | grep HTTP
 sudo apachectl configtest && sudo service apache2 restart
 
