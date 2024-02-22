@@ -5,6 +5,7 @@
 
 
 curl -I --http2 -s https://gutterempire.app/ | grep HTTP
+sudo apachectl configtest && sudo service apache2 restart
 ==============
 sudo update-alternatives --set php /usr/bin/php5.6
 sudo update-alternatives --config php
