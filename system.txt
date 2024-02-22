@@ -4,6 +4,13 @@
   SSLCertificateChainFile /etc/ssl/certs/example.ca-bundle
 ======================
 apachectl -M | grep ssl
+grep -i -r "SSLCertificateFile" /etc/apache2/
+
+# sudo -u www-data php occ  maintenance:install --database \
+"mysql" --database-name "nextcloud"  --database-user "nextcloud" --database-pass \
+"passw@rd" --admin-user "admin" --admin-pass "admin123"
+
+https://mailserverguru.com/install-nextcloud-on-ubuntu-22-04-lts/
 ================
 <VirtualHost *:80>
 
