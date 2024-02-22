@@ -2,8 +2,8 @@
   SSLCertificateFile /etc/ssl/certs/example.crt
   SSLCertificateKeyFile /etc/ssl/private/example.key
   SSLCertificateChainFile /etc/ssl/certs/example.ca-bundle
-
-
+======================
+apachectl -M | grep ssl
 ================
 <VirtualHost *:80>
 
