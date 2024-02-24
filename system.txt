@@ -1,3 +1,32 @@
+
+
+$ a2enmod proxy
+$ a2enmod proxy_http
+$ a2enmod proxy_ajp
+$ a2enmod rewrite
+$ a2enmod deflate
+$ a2enmod headers
+$ a2enmod proxy_balancer
+$ a2enmod proxy_connect
+$ a2enmod proxy_html
+
+Enable the Apache2 Proxy command 
+
+<VirtualHost *:80>
+    ServerName your-server-ip
+
+    ProxyRequests Off
+    ProxyPreserveHost On
+    ProxyVia Full
+
+    <Proxy *>
+        Require all granted
+    </Proxy>
+
+    ProxyPass / http://127.0.0.1:8000/
+    ProxyPassReverse / http://127.0.0.1:8000/
+</VirtualHost>
+=======================
 host_key_checking=False
 inventory=/home/ec2-user/host.txt
 private_key_file=/home/ec2-user/oskey.pem
