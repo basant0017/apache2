@@ -1,5 +1,23 @@
+=================
 
+<VirtualHost *:80>
+    ServerName my.website.domain
+    ProxyRequests Off
+    ProxyPreserveHost On
+    ProxyPass / http://10.0.0.10/
+    ProxyPassReverse / http://10.0.0.10/
+</VirtualHost>
 
+<VirtualHost *:443>
+    ServerName my.website.domain
+    ProxyRequests Off
+    ProxyPreserveHost On
+    ProxyPass / http://10.0.0.10/
+    ProxyPassReverse / http://10.0.0.10/
+    SSLCertificateFile /ssl-certs/my_cert.pem
+    SSLCertificateKeyFile /ssl-certs/my_private_key.pem
+</VirtualHost>
+===============
 $ a2enmod proxy
 $ a2enmod proxy_http
 $ a2enmod proxy_ajp
