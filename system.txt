@@ -1,4 +1,25 @@
 
+--------------------------------
+$.ajax({
+    method: "GET",
+    url: 'recordings/[SID]',
+}).done((data)=> {
+    //DO STUFF
+})
+------------------------
+ProxyRequests on
+ProxyPass /recordings/ http://localhost:3001/recordings/
+
+----------------------
+Install Node.js, and create a server like this:
+var http = require('http');
+
+var server = http.createServer(function(req, res) {
+  res.writeHead(200);
+  res.end('Hello, world!');
+});
+
+server.listen(80, '111.111.111.111');
 -----------------------------------------
 sudo a2enmod proxy
 sudo a2enmod proxy_http
