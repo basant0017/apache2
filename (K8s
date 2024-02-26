@@ -5,6 +5,29 @@ https://medium.com/@yamanlakis/boosting-gitlab-ci-for-node-js-applications-using
 https://blog.stackademic.com/deploy-node-js-express-js-app-to-ec2-using-gitlab-ci-cd-a-complete-step-by-step-guide-f60e2b6279bd
 https://dev.to/atdigitals/deploy-node-js-using-gitlab-ci-pipeline-2jod
 https://taylor.callsen.me/how-to-dockerize-a-nodejs-app-and-deploy-it-using-gitlab-ci/
+
+image: ruby:2.6
+
+services:
+  - postgres:11
+
+before_script:  
+  - apt-get update -qq && apt-get install
+
+test:
+  stage: test
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y nodejs
+    - node -v && npm -v
+    - npm i yarn
+    - yarn install --check-files
+    - yarn config set cache-folder .yarn
+  script:
+  - bundle install --path /cache
+  - bundle exec rake db:create RAILS_ENV=test
+  - bundle exec rake test
+  - yarn test
 install AWSCLI
  curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
  apt install unzip python
