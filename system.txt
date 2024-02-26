@@ -1,7 +1,8 @@
 
 
-
-
+Start or Run node server with pm2
+pm2 start npm --name "app-name" -- start
+============================================================================
 $ echo "IncludeOptional sites-enabled/*.conf" | sudo tee -a /etc/apache2/apache2.conf
 $ mkdir /etc/apache2/sites-{available,enabled}/
 $ vim /etc/apache2/sites-available/reverse-proxy.conf
