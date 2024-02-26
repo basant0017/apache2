@@ -4,6 +4,7 @@ https://www.mirantis.com/blog/kubernetes-replication-controller-replica-set-and-
 https://medium.com/@yamanlakis/boosting-gitlab-ci-for-node-js-applications-using-docker-and-swc-for-lightning-fast-pipelines-2e4c647d9cb
 https://blog.stackademic.com/deploy-node-js-express-js-app-to-ec2-using-gitlab-ci-cd-a-complete-step-by-step-guide-f60e2b6279bd
 https://dev.to/atdigitals/deploy-node-js-using-gitlab-ci-pipeline-2jod
+https://taylor.callsen.me/how-to-dockerize-a-nodejs-app-and-deploy-it-using-gitlab-ci/
 install AWSCLI
  curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
  apt install unzip python
