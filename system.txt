@@ -1,4 +1,28 @@
 
+
+
+
+$ echo "IncludeOptional sites-enabled/*.conf" | sudo tee -a /etc/apache2/apache2.conf
+$ mkdir /etc/apache2/sites-{available,enabled}/
+$ vim /etc/apache2/sites-available/reverse-proxy.conf
+
+        <VirtualHost *:443>
+            SSLEngine on
+            ServerName      ${vhostServerName}
+            DocumentRoot /var/www/html/
+            SSLProxyEngine on
+            ProxyPreserveHost On
+            ProxyPass / https://${proxyDestAndPort}
+            ProxyPassReverse / https://${proxyDestAndPort}
+            Header   always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+            LogLevel info
+            SSLCertificateFile ${vhostSSLCert}
+            SSLCertificateKeyFile ${vhostSSLKey}
+        </VirtualHost>
+
+$ sudo ln -s /etc/apache2/sites-available/reverse-proxy.conf /etc/apache2/sites-enabled/reverse-proxy.conf
+$ sudo systemctl restart apache2.service
+
 --------------------------------
 $.ajax({
     method: "GET",
