@@ -1,5 +1,15 @@
 
-
+Nginx
+Varnish
+Apache Traffic Server
+HAProxy
+https://kinsta.com/blog/reverse-proxy/
+==========
+sudo apt-get install nginx -y
+The following Nginx packages will be installed on Ubuntu 22:
+libnginx-mod-http-geoip2 nginx-common nginx-core nginx-proxy
+Setting up nginx 1.18 ubuntu 22... Done
+===================================
 Start or Run node server with pm2
 pm2 start npm --name "app-name" -- start
 ============================================================================
