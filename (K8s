@@ -13,6 +13,19 @@ https://blog.openreplay.com/gitlab-ci-cd-pipelines/
 https://earthly.dev/blog/gitlab-ci/
 https://blog.morizyun.com/javascript/gitlab-ci-gitlab-ci-yml.html
 https://zanechua.com/blog/lint-and-format-code-node-gitlab-pipelines/
+https://docs.gitlab.cn/14.0/ee/user/project/clusters/serverless/aws.html
+image: node:latest
+stages:
+  - build-test
+local_integration_test:
+  stage: build-test
+  script:
+    - npm install
+    - node server.js &
+    - npm test "test/integration/test.js"
+====
+https://javascript.plainenglish.io/deploying-a-node-app-on-elastic-beanstalk-with-gitlab-ci-81210efbfec8
+
 ==================================================
 # Check if the project properly installs and builds all dependencies
 build_job:
