@@ -7,6 +7,7 @@ https://dev.to/atdigitals/deploy-node-js-using-gitlab-ci-pipeline-2jod
 https://taylor.callsen.me/how-to-dockerize-a-nodejs-app-and-deploy-it-using-gitlab-ci/
 https://www.briswell-vn.com/en/news/gitlabrunner-nodejs-ec2/
 https://tkssharma-devops.gitbook.io/devops-training/devops-01-continuous-integration/continuous-integration-and-continuous-delivery/ci-cd-using-gitlab-ci-s3/ci-integration-with-aws/ci-integration-with-ec2/update-and-clean-gitlab.yml
+https://forum.gitlab.com/t/deploying-different-node-js-projects-using-gitlab-runner/3910
 image: ruby:2.6
 
 services:
