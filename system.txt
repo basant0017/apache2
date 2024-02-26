@@ -1,5 +1,27 @@
 
+=======================================
+<VirtualHost *:443>
+ProxyPreserveHost On
+#Don't include the brackets when adding your domain
+ServerAlias [domain alias so www.mydomain.com for example]
+ServerName [domain so mydomain.com]
+<Proxy *>
+ Order deny,allow
+ Allow from all
+</Proxy>
+SSLEngine on
+SSLProxyEngine On
+SSLCertificateFile    [path/to]/server.cert
+SSLCertificateKeyFile [path/to]/server.key
+SSLProxyVerify none
+SSLProxyCheckPeerCN off
+SSLProxyCheckPeerName off
+SSLProxyCheckPeerExpire off
+ProxyPass / https://127.0.0.1:[your port number]/
+ProxyPassReverse / https://127.0.0.1:[your port number]/
+</VirtualHost>
 
+=======================================================
 /etc/httpd/conf.modules.d/00-proxy.conf
 
 LoadModule proxy_module modules/mod_proxy.so
