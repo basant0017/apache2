@@ -10,6 +10,7 @@ https://tkssharma-devops.gitbook.io/devops-training/devops-01-continuous-integra
 https://forum.gitlab.com/t/deploying-different-node-js-projects-using-gitlab-runner/3910
 https://www.softcover.io/read/knightoftheoldcode/levelup-book-mean/gitlab_basic_test_harness
 https://blog.openreplay.com/gitlab-ci-cd-pipelines/
+https://earthly.dev/blog/gitlab-ci/
 ==================================================
 # Check if the project properly installs and builds all dependencies
 build_job:
