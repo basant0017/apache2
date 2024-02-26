@@ -11,6 +11,8 @@ https://forum.gitlab.com/t/deploying-different-node-js-projects-using-gitlab-run
 https://www.softcover.io/read/knightoftheoldcode/levelup-book-mean/gitlab_basic_test_harness
 https://blog.openreplay.com/gitlab-ci-cd-pipelines/
 https://earthly.dev/blog/gitlab-ci/
+https://blog.morizyun.com/javascript/gitlab-ci-gitlab-ci-yml.html
+
 ==================================================
 # Check if the project properly installs and builds all dependencies
 build_job:
