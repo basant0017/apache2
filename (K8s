@@ -5,7 +5,7 @@ https://medium.com/@yamanlakis/boosting-gitlab-ci-for-node-js-applications-using
 https://blog.stackademic.com/deploy-node-js-express-js-app-to-ec2-using-gitlab-ci-cd-a-complete-step-by-step-guide-f60e2b6279bd
 https://dev.to/atdigitals/deploy-node-js-using-gitlab-ci-pipeline-2jod
 https://taylor.callsen.me/how-to-dockerize-a-nodejs-app-and-deploy-it-using-gitlab-ci/
-
+https://www.briswell-vn.com/en/news/gitlabrunner-nodejs-ec2/
 image: ruby:2.6
 
 services:
