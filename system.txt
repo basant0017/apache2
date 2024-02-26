@@ -1,3 +1,38 @@
+
+
+/etc/httpd/conf.modules.d/00-proxy.conf
+
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+sudo a2enmod proxy proxy_http 
+sudo nano /etc/apache2/sites-available/example.com.conf 
+
+### Redhat based system's 
+sudo vim /etc/httpd/conf.d/example.com.conf 
+
+
+<VirtualHost *:80>
+      ServerName example.com
+      ServerAlias www.example.com
+      ServerAdmin webmaster@example.com
+
+      ProxyPreserveHost On
+      ProxyPass / http://localhost:3000/
+      ProxyPassReverse / http://localhost:3000/
+
+      ErrorLog /var/log/apache2/error.log
+      CustomLog /var/log/apache2/access.log combined
+</VirtualHost>
+
+====================
+<VirtualHost *:80>
+    ServerName example.com
+    DocumentRoot /var/www/example/
+    <Location /node>
+        ProxyPass http://127.0.0.1:8124/
+        ProxyPassReverse http://127.0.0.1:8124/
+    </Location>
+</VirtualHost>
 =================
 
 <VirtualHost *:80>
