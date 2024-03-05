@@ -1,5 +1,25 @@
 ====================
 cat certificate.crt intermediate.crt >> bundle.crt
+cat your_domain.crt intermediate.crt root.crt >> ssl-bundle.crt
+cat your_domain.crt your_domain.ca-bundle >> ssl-bundle.crt
+sudo find nginx.conf
+server {
+listen 443;
+ssl on;
+ssl_certificate /etc/ssl/ssl-bundle.crt;
+ssl_certificate_key /path/to/your_private.key;
+root /path/to/webroot;
+server_name your_domain.com;
+}
+access_log /var/log/nginx/nginx.vhost.access.log;
+error_log /var/log/nginx/nginx.vhost.error.log;
+location / {
+root /var/www/;
+root  /home/www/public_html/your.domain.com/public/;
+index index.html;
+}
+}
+=========================================
 server {
     listen 443;
     ssl on;
