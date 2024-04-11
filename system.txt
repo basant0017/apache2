@@ -1,3 +1,7 @@
+
+=========================
+sudo apt-add-repository ppa:xtradeb/apps 
+Sudo apt install FileZilla
 ====================
 cat certificate.crt intermediate.crt >> bundle.crt
 cat your_domain.crt intermediate.crt root.crt >> ssl-bundle.crt
