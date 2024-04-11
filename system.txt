@@ -1,4 +1,18 @@
-
+------------------------------------
+sudo update-alternatives --set php /usr/bin/php8.2 
+sudo update-alternatives --set phar /usr/bin/phar8.2 
+sudo update-alternatives --set phar.phar /usr/bin/phar.phar8.2 
+sudo update-alternatives --set phpize /usr/bin/phpize8.2 
+sudo update-alternatives --set php-config /usr/bin/php-config8.2 
+# Disable PHP 7.0
+sudo a2dismod php8.1
+# Output
+Module php7.0 disabled.
+To activate the new configuration, you need to run:
+  systemctl restart apache2
+# Enable PHP 8.0
+sudo a2enmod php7.4
+systemctl restart apache2
 =========================
 sudo apt-add-repository ppa:xtradeb/apps 
 Sudo apt install FileZilla
