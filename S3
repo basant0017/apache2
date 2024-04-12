@@ -8,6 +8,7 @@ Amazon S3 Name :
 AWS Region: US East (Ohio) us-east-2
 =============================
 https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html
+https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStartedCreateDistribution.html
 aws s3 ls or aws s3 sync
 aws s3 sync s3://DOC-EXAMPLE-BUCKET-SOURCE s3://DOC-EXAMPLE-BUCKET-TARGET
 Delete buckets
