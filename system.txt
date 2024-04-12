@@ -1,4 +1,5 @@
 ------------------------------------
+https://php.watch/articles/php-8.3-install-upgrade-on-debian-ubuntu
 sudo update-alternatives --set php /usr/bin/php8.2 
 sudo update-alternatives --set phar /usr/bin/phar8.2 
 sudo update-alternatives --set phar.phar /usr/bin/phar.phar8.2 
