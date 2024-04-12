@@ -1,0 +1,46 @@
+S3 with cloudfront:
+
+=======================================
+details share:
+CloudFront url: https://
+
+Amazon S3 Name :
+AWS Region: US East (Ohio) us-east-2
+=============================
+https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html
+aws s3 ls or aws s3 sync
+aws s3 sync s3://DOC-EXAMPLE-BUCKET-SOURCE s3://DOC-EXAMPLE-BUCKET-TARGET
+Delete buckets
+aws s3 rb s3://bucket-name
+aws s3 rb s3://bucket-name --force
+Delete objects
+aws s3 rm s3://bucket-name/example/filename.txt
+The following example deletes all objects from s3://bucket-name/example using the --recursive option.
+aws s3 rm s3://bucket-name/example --recursive
+Move objects
+
+
+s3 policy:
+===============
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutObject",
+				"s3:GetObject",
+				"s3:ListBucket"
+			],
+			"Resource": [
+				"arn:aws:s3:::Bucket-name",
+				"arn:aws:s3:::Bucket-name/*"
+			]
+		}
+	]
+}
+
+======================================
+
+
