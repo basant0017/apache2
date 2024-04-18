@@ -1,3 +1,8 @@
+=====================
+forever list
+forever start -c "npm start" ./
+forever restartall
+
 ------------------------------------
 https://php.watch/articles/php-8.3-install-upgrade-on-debian-ubuntu
 sudo update-alternatives --set php /usr/bin/php8.2 
