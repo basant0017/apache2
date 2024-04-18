@@ -20,6 +20,18 @@ aws s3 rm s3://bucket-name/example/filename.txt
 The following example deletes all objects from s3://bucket-name/example using the --recursive option.
 aws s3 rm s3://bucket-name/example --recursive
 Move objects
+===================
+Install all the dependencies for fuse and s3cmd.
+sudo yum install awscli   
+$ sudo yum install automake fuse fuse-devel gcc-c++ git libcurl-devel libxml2-devel make openssl-devel       
+This command will show <unique S3 name> if configured properly.
+aws s3 ls 
+touch test01.txt      
+aws s3 cp test01.txt s3://<<unique S3 name>>/sent01.txt
+-------------------
+Sync the local directory with the S3 bucket.
+aws s3 sync /mnt/s3-bucket s3://<unique S3 name> 
+
 
 
 s3 policy:
