@@ -31,6 +31,7 @@ aws s3 cp test01.txt s3://<<unique S3 name>>/sent01.txt
 -------------------
 Sync the local directory with the S3 bucket.
 aws s3 sync /mnt/s3-bucket s3://<unique S3 name> 
+----------------------------
 
 
 
@@ -65,6 +66,11 @@ on CentOS/Fedora
 on Ubuntu
 # apt install s3fs
 =================================
+s3 backet of use network drive ki tarh mount kar sakte h
+Software install karna padega
+IntDrive
+----------------------------
+
 
 
 
