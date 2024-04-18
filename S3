@@ -7,6 +7,7 @@ CloudFront url: https://
 Amazon S3 Name :
 AWS Region: US East (Ohio) us-east-2
 =============================
+
 https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html
 https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/GettingStartedCreateDistribution.html
 aws s3 ls or aws s3 sync
@@ -43,5 +44,17 @@ s3 policy:
 }
 
 ======================================
+How to mount s3 in linux server:
+we need to install package 
+Mounting S3 bucket using fstab
+Install the s3fs filesystem driver
+on CentOS/Fedora
+# dnf install s3fs-fuse
+on Ubuntu
+# apt install s3fs
+=================================
+
+
+
 
 
