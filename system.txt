@@ -25,6 +25,11 @@ systemctl stop apache2
 a2dismod php7.4
 a2dismod mpm_prefork
 a2enmod mpm_event
+apt-get install libapache2-mod-fcgid -y
+a2enconf php7.4-fpm
+a2enmod proxy
+a2enmod proxy_fcgi
+apachectl -M | grep 'mpm'
 # Disable PHP 7.0
 sudo a2dismod php8.1
 # Output
