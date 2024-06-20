@@ -15,6 +15,13 @@ forever start -c "npm start" ./
 forever restartall
 
 ------------------------------------
+AWSCLI Installation Script
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo apt install unzip -y
+unzip awscliv2.zip
+sudo ./aws/install
+
+========================================================
 https://php.watch/articles/php-8.3-install-upgrade-on-debian-ubuntu
 sudo update-alternatives --set php /usr/bin/php8.2 
 sudo update-alternatives --set phar /usr/bin/phar8.2 
