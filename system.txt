@@ -1,3 +1,4 @@
+EC2_PUBLIC_IP=`curl -s ifconfig.co`
 -------------------------------------------
 <VirtualHost [IP ADDRESS]:443>
 ServerAdmin webmaster@ssl-tutorials.com
