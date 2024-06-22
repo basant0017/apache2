@@ -21,6 +21,23 @@ sudo apt install unzip -y
 unzip awscliv2.zip
 sudo ./aws/install
 
+----------------------------------------------
+#! /bin/bash
+curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+-----------------------
+#! /bin/bash
+
+sudo apt update
+sudo apt install docker.io -y
+sudo usermod -aG docker jenkins
+sudo usermod -aG docker ubuntu
+sudo systemctl restart docker
+sudo chmod 777 /var/run/docker.sock
+
+
 ========================================================
 https://php.watch/articles/php-8.3-install-upgrade-on-debian-ubuntu
 sudo update-alternatives --set php /usr/bin/php8.2 
