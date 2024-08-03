@@ -1,3 +1,24 @@
+===================================
+Install Azure CLI in Linux
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
+sudo yum install -y azure-cli
+
+How to Install Terraform in RHEL, CentOS & Fedora Linux machine
+$ sudo yum install -y yum-utils
+#### Below $release is "RHEL", "AmazonLinux", or "fedora" As per your OS #####
+$ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/$release/hashicorp.repo
+$ sudo yum update
+$ sudo yum install terraform
+###### -------- Verify Installation ---------- ######
+$ terraform version
+
+How to login your Azure Subscription and authenticate
+az login
+az account set --subscription <SUBSCRIPTION_ID>
+
+
+===================================
 EC2_PUBLIC_IP=`curl -s ifconfig.co`
 -------------------------------------------
 <VirtualHost [IP ADDRESS]:443>
