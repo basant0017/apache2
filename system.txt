@@ -24,6 +24,13 @@ sudo apt install php8.1-xsl
 sudo apt install php8.1-opcache
 sudo apt install php8.1-zip
 ===================================
+python3 -m venv env
+source env/bin/activate
+pip3 install -r requirements.txt
+python3 manage.py runserver 0.0.0.0:8000
+=============================
+aws configure --profile AmazonCloudWatchAgent
+==========================================
 Install Azure CLI in Linux
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
