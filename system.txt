@@ -9,6 +9,24 @@ sudo apt install php8.1-common php8.1-fpm php8.1-mysql php8.1-xml php8.1-curl ph
 
 sudo apt install php8.2-common php8.2-fpm php8.2-mysql php8.2-xml php8.2-curl php8.2-gd php8.2-imagick php8.2-cli php8.2-imap php8.2-mbstring php8.2-opcache php8.2-soap php8.2-zip php8.2-intl -y
 
+node:
+curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+
+sudo swapon --show
+sudo fallocate -l 1G /swapfile
+ls -lh /swapfile
+sudo chmod 600 /swapfile
+ls -lh /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon --show
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+
+
 sudo update-alternatives --set php /usr/bin/php8.2 
 sudo update-alternatives --set phar /usr/bin/phar8.2 
 sudo update-alternatives --set phar.phar /usr/bin/phar.phar8.2 
