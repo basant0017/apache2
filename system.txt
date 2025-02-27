@@ -9,6 +9,10 @@ sudo apt install php8.1-common php8.1-fpm php8.1-mysql php8.1-xml php8.1-curl ph
 
 sudo apt install php8.2-common php8.2-fpm php8.2-mysql php8.2-xml php8.2-curl php8.2-gd php8.2-imagick php8.2-cli php8.2-imap php8.2-mbstring php8.2-opcache php8.2-soap php8.2-zip php8.2-intl -y
 
+ssl csr genterate 
+openssl genrsa -out  altcom.app.key 4096
+openssl req -new -key altcom.app.key -out altcom.app.csr
+
 node:
 curl -sL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
