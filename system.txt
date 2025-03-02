@@ -180,40 +180,7 @@ server {
     add_header Access-Control-Allow-Headers "Authorization, Content-Type, X-Requested-With" always;
     add_header Access-Control-Allow-Credentials "true" always;
 
-========================================================================
-server {
-listen 443;
-ssl on;
-ssl_certificate /etc/ssl/ssl-bundle.crt;
-ssl_certificate_key /path/to/your_private.key;
-root /path/to/webroot;
-server_name your_domain.com;
-}
-access_log /var/log/nginx/nginx.vhost.access.log;
-error_log /var/log/nginx/nginx.vhost.error.log;
-location / {
-root /var/www/;
-root  /home/www/public_html/your.domain.com/public/;
-index index.html;
-}
-}
-=========================================
-server {
-    listen 443;
-    ssl on;
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    ssl_certificate /etc/nginx/ssl/bundle.crt;
-    ssl_certificate_key /etc/nginx/ssl/private.key;
 
-    server_name www.example.com;
-    access_log /path/to/nginx/accces/log/file;
-    error_log /path/to/nginx/error/log/file;
-
-    location / {
-        root  /var/www/html/yoursite/;
-        index  index.html;
-    }
-}
 ========================
 Nginx
 Varnish
@@ -256,49 +223,6 @@ Setting up nginx 1.18 ubuntu 22... Done
 Start or Run node server with pm2
 pm2 start npm --name "app-name" -- start
 ============================================================================
-$ echo "IncludeOptional sites-enabled/*.conf" | sudo tee -a /etc/apache2/apache2.conf
-$ mkdir /etc/apache2/sites-{available,enabled}/
-$ vim /etc/apache2/sites-available/reverse-proxy.conf
-
-        <VirtualHost *:443>
-            SSLEngine on
-            ServerName      ${vhostServerName}
-            DocumentRoot /var/www/html/
-            SSLProxyEngine on
-            ProxyPreserveHost On
-            ProxyPass / https://${proxyDestAndPort}
-            ProxyPassReverse / https://${proxyDestAndPort}
-            Header   always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-            LogLevel info
-            SSLCertificateFile ${vhostSSLCert}
-            SSLCertificateKeyFile ${vhostSSLKey}
-        </VirtualHost>
-
-$ sudo ln -s /etc/apache2/sites-available/reverse-proxy.conf /etc/apache2/sites-enabled/reverse-proxy.conf
-$ sudo systemctl restart apache2.service
-
---------------------------------
-$.ajax({
-    method: "GET",
-    url: 'recordings/[SID]',
-}).done((data)=> {
-    //DO STUFF
-})
-------------------------
-ProxyRequests on
-ProxyPass /recordings/ http://localhost:3001/recordings/
-
-----------------------
-Install Node.js, and create a server like this:
-var http = require('http');
-
-var server = http.createServer(function(req, res) {
-  res.writeHead(200);
-  res.end('Hello, world!');
-});
-
-server.listen(80, '111.111.111.111');
------------------------------------------
 sudo a2enmod proxy
 sudo a2enmod proxy_http
 sudo a2enmod proxy_html
@@ -313,28 +237,6 @@ cd ~/path/to/your/nodeapp/app.js
  }).listen(8080);
  console.log('Server running at http://127.0.0.1:8080/');
 =======================================
-<VirtualHost *:443>
-ProxyPreserveHost On
-#Don't include the brackets when adding your domain
-ServerAlias [domain alias so www.mydomain.com for example]
-ServerName [domain so mydomain.com]
-<Proxy *>
- Order deny,allow
- Allow from all
-</Proxy>
-SSLEngine on
-SSLProxyEngine On
-SSLCertificateFile    [path/to]/server.cert
-SSLCertificateKeyFile [path/to]/server.key
-SSLProxyVerify none
-SSLProxyCheckPeerCN off
-SSLProxyCheckPeerName off
-SSLProxyCheckPeerExpire off
-ProxyPass / https://127.0.0.1:[your port number]/
-ProxyPassReverse / https://127.0.0.1:[your port number]/
-</VirtualHost>
-
-=======================================================
 /etc/httpd/conf.modules.d/00-proxy.conf
 
 LoadModule proxy_module modules/mod_proxy.so
@@ -344,49 +246,6 @@ sudo nano /etc/apache2/sites-available/example.com.conf
 
 ### Redhat based system's 
 sudo vim /etc/httpd/conf.d/example.com.conf 
-
-
-<VirtualHost *:80>
-      ServerName example.com
-      ServerAlias www.example.com
-      ServerAdmin webmaster@example.com
-
-      ProxyPreserveHost On
-      ProxyPass / http://localhost:3000/
-      ProxyPassReverse / http://localhost:3000/
-
-      ErrorLog /var/log/apache2/error.log
-      CustomLog /var/log/apache2/access.log combined
-</VirtualHost>
-
-====================
-<VirtualHost *:80>
-    ServerName example.com
-    DocumentRoot /var/www/example/
-    <Location /node>
-        ProxyPass http://127.0.0.1:8124/
-        ProxyPassReverse http://127.0.0.1:8124/
-    </Location>
-</VirtualHost>
-=================
-
-<VirtualHost *:80>
-    ServerName my.website.domain
-    ProxyRequests Off
-    ProxyPreserveHost On
-    ProxyPass / http://10.0.0.10/
-    ProxyPassReverse / http://10.0.0.10/
-</VirtualHost>
-
-<VirtualHost *:443>
-    ServerName my.website.domain
-    ProxyRequests Off
-    ProxyPreserveHost On
-    ProxyPass / http://10.0.0.10/
-    ProxyPassReverse / http://10.0.0.10/
-    SSLCertificateFile /ssl-certs/my_cert.pem
-    SSLCertificateKeyFile /ssl-certs/my_private_key.pem
-</VirtualHost>
 ===============
 $ a2enmod proxy
 $ a2enmod proxy_http
