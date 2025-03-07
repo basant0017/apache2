@@ -1,3 +1,29 @@
+===================================================================================================================
+Inititialize Git repository
+cd ~/environment/sam-app
+git init -b main
+echo -e "\n\n.aws-sam" >> .gitignore
+echo -e "samconfig.toml" >> .gitignore
+echo -e "target" >> .gitignore
+git add .
+git commit -m "Initial commit"
+
+Push the code
+Add your GitHub repository URL as a remote on your local git project
+git remote add origin https://github.com/<YOUR_USER>/sam-app.git
+Note
+If you mis-typed the origin url, you can remove it by running: git remote rm origin.
+Now, push the code:
+git push -u origin main
+
+
+---
+cd ~/environment/sam-app
+git add .
+git commit -m "Adding SAM CI/CD Pipeline definition"
+git push
+
+====================================================================================================================
 Git global setup
 git config --global user.name "Basant_Kumawat"
 git config --global user.email "basant.kumawat@ninehertzindia.com"
