@@ -15,6 +15,22 @@ $ sudo apt install php8.1 libapache2-mod-php8.1
 $ sudo update-alternatives --config php
  php --version
 
+https://technoupdate.medium.com/how-to-configure-gitlab-runner-on-ubuntu-22-04-lts-3588a47a2d0a
+Official GitLab Repository
+curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
+sudo apt-get install gitlab-runner
+sudo gitlab-runner -version
+sudo gitlab-runner status
+sudo gitlab-runner start
+sudo gitlab-runner enable
+
+sudo visudo
+gitlab-runner ALL=(ALL:ALL) ALL
+gitlab-runner ALL=(ALL) NOPASSWD: ALL 
+
+
+
+
 How To Find your Server’s Public IP Address
 ip addr show ens3 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
 
