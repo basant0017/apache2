@@ -28,6 +28,8 @@ sudo visudo
 gitlab-runner ALL=(ALL:ALL) ALL
 gitlab-runner ALL=(ALL) NOPASSWD: ALL 
 
+sudo usermod -aG docker gitlab-runner
+sudo systemctl restart gitlab-runner
 
 
 
