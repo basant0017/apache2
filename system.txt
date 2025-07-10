@@ -31,6 +31,16 @@ gitlab-runner ALL=(ALL) NOPASSWD: ALL
 sudo usermod -aG docker gitlab-runner
 sudo systemctl restart gitlab-runner
 
+sudo apt update 
+sudo apt install certbot python3-certbot-apache  # For Apache 
+sudo apt install certbot python3-certbot-nginx   # For Nginx 
+
+sudo yum install epel-release
+sudo yum install certbot python2-certbot-apache  # For Apache
+sudo yum install certbot python2-certbot-nginx   # For Nginx
+
+sudo certbot --apache -d your_domain -d www.your_domain 
+sudo certbot renew --dry-run
 
 
 How To Find your Server’s Public IP Address
