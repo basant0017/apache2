@@ -1,0 +1,67 @@
+root@srv712779:~# cat /etc/nginx/sites-available/sonatakeramika.com.conf
+server {
+    listen 443 ssl;
+    server_name app.com www.app.com;
+
+    root /var/www/app.com/build;
+    index index.html index.htm;
+
+    # SPA fallback to index.html
+    location / {
+        try_files $uri /index.html;
+    }
+
+    access_log /var/log/nginx/com.com.access.log;
+    error_log /var/log/nginx/com.com.error.log;
+
+    ssl_certificate /etc/letsencrypt/live/kerasontiles.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/kerasontiles.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+
+=================================================
+# Turn on Rewrite Engine
+RewriteEngine On
+
+# Redirect all requests to index.html
+# This is useful for Single Page Applications (SPAs) where the routing is handled by JavaScript
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]
+
+# Optionally, handle compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Enable CORS for web fonts
+<IfModule mod_headers.c>
+    # Set Access-Control-Allow-Origin only for fonts & CSS files
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET"
+    </FilesMatch>
+
+    # Apply X-Frame-Options to the entire website
+    Header always set Content-Security-Policy "frame-ancestors 'none';"
+</IfModule>
+
+# Correct MIME types for web fonts
+<IfModule mod_mime.c>
+    AddType application/font-woff woff
+    AddType application/font-woff2 woff2
+    AddType application/vnd.ms-fontobject eot
+    AddType font/ttf ttf
+    AddType font/otf otf
+</IfModule>
+==========================================================================================================
