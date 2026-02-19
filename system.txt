@@ -100,7 +100,7 @@ How To Find your Server’s Public IP Address
 ip addr show ens3 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
 
 ssl csr genterate 
-openssl genrsa -out  alt.app.key 4096
+openssl genrsa -out gencareconnect.com.key 4096
 openssl req -new -key al.app.key -out altcom.app.csr
 
 node:
