@@ -42,7 +42,7 @@ echo "🔄 Updating package list..."
 sudo apt update -y
 
 echo "🐳 Installing Docker..."
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
 
 echo "▶️ Starting Docker..."
 sudo systemctl start docker
