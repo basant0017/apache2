@@ -16,6 +16,46 @@ $ sudo update-alternatives --config php
  php --version
 
 
+sudo apt update
+sudo apt install awscli -y
+aws --version
+
+sudo apt update
+sudo apt install jq -y
+
+
+Install CodeDeploy Agent
+sudo apt install ruby wget -y
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x install
+sudo ./install auto
+
+sudo systemctl start codedeploy-agent
+sudo systemctl enable codedeploy-agent
+
+sudo systemctl status codedeploy-agent
+
+
+sudo apt update
+sudo apt install docker.io -y
+
+sudo systemctl enable docker
+sudo systemctl start docker
+
+Restart GitHub Runner
+systemctl list-units | grep runner
+sudo systemctl restart actions.runner.*
+OR manually:
+cd ~/actions-runner
+sudo ./svc.sh restart
+cd ~/actions-runner-code-deploy
+sudo ./svc.sh restart
+
+Add ubuntu to docker group
+sudo usermod -aG docker ubuntu
+Reload group permissions
+newgrp docker
+
 ====================================Docker-install===============
 #!/bin/bash
 
