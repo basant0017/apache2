@@ -16,6 +16,32 @@ $ sudo update-alternatives --config php
  php --version
 
 
+sudo usermod -aG docker ubuntu
+Reload group permissions
+newgrp docker
+
+systemctl list-units | grep runner
+sudo systemctl restart actions.runner.*
+cd ~/actions-runner
+sudo ./svc.sh restart
+
+cd ~/actions-runner-code-deploy
+sudo ./svc.sh restart
+
+
+Install CodeDeploy Agent
+sudo apt install ruby wget -y
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x install
+sudo ./install auto
+
+sudo systemctl start codedeploy-agent
+sudo systemctl enable codedeploy-agent
+
+sudo systemctl status codedeploy-agent
+
+sudo apt-get install -y jq
+
 ====================================Docker-install===============
 #!/bin/bash
 
